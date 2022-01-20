@@ -1,4 +1,4 @@
-package com.purpleFireApi.security;
+package com.purpleFireApi.springboot.security;
 
 import java.io.IOError;
 import java.io.IOException;

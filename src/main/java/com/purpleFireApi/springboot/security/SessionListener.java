@@ -1,4 +1,4 @@
-package com.purpleFireApi.security;
+package com.purpleFireApi.springboot.security;
 
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
