@@ -21,9 +21,6 @@ public class UserDaoImpl implements UserDAO {
 	public List<User> get() {
 		List<User> result = null;
 		try {
-//			Session currentSession = entityManager.unwrap(Session.class);
-//			Query<Users> query = currentSession.createQuery("from Users", Users.class);
-//		    result = query.getResultList();
 			Session currentSession = entityManager.unwrap(Session.class);
 			result = currentSession.createQuery("from User", User.class).getResultList();
 		} catch (Exception e) {

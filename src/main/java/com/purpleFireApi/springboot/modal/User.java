@@ -1,12 +1,22 @@
 package com.purpleFireApi.springboot.modal;
 
 import java.sql.Date;
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+import javax.persistence.SecondaryTable;
+import javax.persistence.SecondaryTables;
 import javax.persistence.Table;
 
 @Entity
@@ -15,8 +25,8 @@ public class User {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column
-	private Integer id;
+	@Column(name = "user_id")
+	private Integer userId;
 	
 	@Basic
 	@Column
@@ -34,11 +44,18 @@ public class User {
 	@Column
 	private Date DOB;
 	
+//	@OneToMany(mappedBy = "user", fetch = FetchType.LAZY, orphanRemoval = false)
+//	private List<Account> listAccount = new ArrayList<>();
+	
+	@OneToOne(cascade = CascadeType.ALL, optional = false)
+    @JoinColumn(name = "account_id")
+    private Account account;
+	
 	public Integer getId() {
-		return id;
+		return userId;
 	}
 	public void setId(Integer id) {
-		this.id = id;
+		this.userId = id;
 	}
 	public String getName() {
 		return name;
@@ -67,15 +84,7 @@ public class User {
 	}
 	@Override
 	public String toString() {
-		return "Users [id=" + id + ", name=" + name + ", role=" + role + ", phoneNumber=" + phoneNumber + ", DOB=" + DOB
+		return "Users [userId=" + userId + ", name=" + name + ", role=" + role + ", phoneNumber=" + phoneNumber + ", DOB=" + DOB
 				+ "]";
 	}
-	
-	
-	
-	
-	
-	
-
-
 }

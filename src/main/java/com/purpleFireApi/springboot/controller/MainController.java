@@ -33,6 +33,7 @@ public class MainController {
 	private AccountInformationService accountInfo;
 	@Autowired
 	private AccountStatementService accountStatements;
+	
 	@GetMapping(path = "/users") // Compliant
 	public List<User> user() {
 		return userDetails.get();
